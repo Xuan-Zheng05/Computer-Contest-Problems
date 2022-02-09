@@ -1,0 +1,33 @@
+5
+equilibrium
+trivial
+organic
+lab
+adhoc
+7
+trivial
+organic
+adhoc
+equilibrium
+trivial
+lab
+adhoc
+
+
+dictionary,map
+
+map["3"] = 1
+map["4"] = 1
+map["5"]= 1
+
+map["3"] = map["3"] + 1;
+max = 0;
+v = 0;
+for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+         int key = entry.getKey();
+         value = map.get(key);
+         if(value > v )
+         v = value
+
+              }
+

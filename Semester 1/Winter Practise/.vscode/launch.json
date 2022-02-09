@@ -1,0 +1,74 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch ARangeMaxQueryProblem",
+            "request": "launch",
+            "mainClass": "ARangeMaxQueryProblem",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch BirthdayGame",
+            "request": "launch",
+            "mainClass": "BirthdayGame",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch BobsTeam",
+            "request": "launch",
+            "mainClass": "BobsTeam",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch BobsTripPlan",
+            "request": "launch",
+            "mainClass": "BobsTripPlan",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch DoublingOrLosing",
+            "request": "launch",
+            "mainClass": "DoublingOrLosing",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch TreatsCollection",
+            "request": "launch",
+            "mainClass": "TreatsCollection",
+            "projectName": "Winter Practise_582ffbd6"
+        },
+        {
+            "type": "java",
+            "name": "Launch BobsMathHomework",
+            "request": "launch",
+            "mainClass": "BobsMathHomework"
+        },
+        {
+            "type": "java",
+            "name": "Launch BobsTripPlan(1)",
+            "request": "launch",
+            "mainClass": "BobsTripPlan"
+        },
+        {
+            "type": "java",
+            "name": "Launch FarthestHiking",
+            "request": "launch",
+            "mainClass": "FarthestHiking"
+        }
+    ]
+}
