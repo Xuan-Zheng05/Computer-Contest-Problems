@@ -10,9 +10,9 @@ public class Herdle {
     public static void main(String[] args) throws IOException {
         int[] freqCorrect = new int[26];
         int[] freqGuess = new int[26];
-
         String correct = readLine() + readLine() + readLine();
         String guess = readLine() + readLine() + readLine();
+
         int green = 0;
         for (int j = 0; j < 9; j++) {
             if (correct.charAt(j) == guess.charAt(j)) {
