@@ -25,13 +25,14 @@ public class TandemBicycles2 {
         int finalSpeed = 0;
         if (question == 1) {
             for (int i = 0; i < n; i++) {
-                finalSpeed = Math.max(Dmojistam[i], Pegland[i]);
+                finalSpeed += Math.max(Dmojistan[i], Pegland[i]);
             }
         } else {
             for (int i = 0; i < n; i++) {
-
+                finalSpeed += Math.max(Dmojistan[i], Pegland[n - (i + 1)]);
             }
         }
+        System.out.println(finalSpeed);
     }
 
     static String next() throws IOException {
