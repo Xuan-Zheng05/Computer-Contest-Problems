@@ -21,7 +21,6 @@ public class FavouriteTimes {
         for (int i = 0; i <= loopTimes; i++) {
             for (int j = 0; j < times.length; j++) {
                 if (time == times[j]) {
-                    System.out.println(time);
                     sequences++;
                     break;
                 }
