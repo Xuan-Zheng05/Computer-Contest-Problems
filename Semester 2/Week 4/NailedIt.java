@@ -27,14 +27,13 @@ public class NailedIt {
             }
         }
         int bestValue = 0;
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            int value = entry.getValue();
-            bestValue = Math.max(bestValue, value);
-        }
         int differentTimes = 0;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int value = entry.getValue();
-            if (value == bestValue) {
+            if (value > bestValue) {
+                differentTimes = 1;
+                bestValue = value;
+            } else if (value == bestValue) {
                 differentTimes++;
             }
         }
