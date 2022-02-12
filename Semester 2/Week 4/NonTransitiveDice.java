@@ -20,32 +20,35 @@ public class NonTransitiveDice {
             }
             Arrays.sort(fDice);
             Arrays.sort(sDice);
+
+            String answer = "no";
             for (int a = 1; a <= 10; a++) {
                 for (int b = 1; b <= 10; b++) {
                     for (int c = 1; c <= 10; c++) {
                         for (int d = 1; d <= 10; d++) {
-                            // Die C{a,b,c,d};
-                            // if (beats(A,B) && beats(B,C) && beats(C,A)) return 1;
-                            // if (beats(B,A) && beats(C,B) && beats(A,C)) return 1;
+                            int[] tDice = { a, b, c, d };
+                            if (beats(fDice, sDice) && beats(sDice, tDice) && beats(tDice, fDice)) {
+                                answer = "yes";
+                            }
+                            if (beats(sDice, fDice) && beats(fDice, tDice) && beats(tDice, sDice)) {
+                                answer = "yes";
+                            }
                         }
                     }
                 }
             }
+            System.out.println(answer);
         }
     }
 
-    public static boolean beats(int[] fDice, int[] sDice) {
-        int wins = 0, losses = 0;
-        for (int i = 0; i < 4; i++)
-            for (int j = 0; j < 4; j++) {
-                if (fDice[i] > sDice[j]) {
-                    ++wins;
-                }
-                if (fDice[i] < sDice[j]) {
-                    ++losses;
-                }
+    static boolean beats(int[] diceA, int[] diceB) {
+        int diff = 0;
+        for (int x : diceA) {
+            for (int y : diceB) {
+                diff += Integer.signum(x - y);
             }
-        return wins > losses;
+        }
+        return diff > 0;
     }
 
     static String next() throws IOException {
