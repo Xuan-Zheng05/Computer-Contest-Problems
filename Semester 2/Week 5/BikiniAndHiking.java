@@ -12,7 +12,7 @@ public class BikiniAndHiking {
         char[] road = readLine().toCharArray();
 
         int sections = 0;
-        for (int i = 0; i < road.length; i++) {
+        for (int i = 0; i < n; i++) {
             if (speed == 0 && road[i] != 'D') {
                 sections++;
             } else {
