@@ -17,8 +17,10 @@ public class FigureSkatingFun {
         for (int i = 0; i < n; i++) {
             if (psa[i] == psa[n - 1] - psa[i]) {
                 System.out.println(i + 1);
+                System.exit(0);
             }
         }
+        System.out.println("Andrew is sad.");
     }
 
     static String next() throws IOException {
