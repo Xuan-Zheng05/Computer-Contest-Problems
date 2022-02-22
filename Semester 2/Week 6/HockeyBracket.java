@@ -59,7 +59,6 @@ public class HockeyBracket {
             }
         }
         System.out.println("");
-
     }
 
     public static HashMap<Integer, Integer> sortByValue(Map<Integer, Integer> points) {
