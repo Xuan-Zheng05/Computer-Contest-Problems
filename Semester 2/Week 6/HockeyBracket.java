@@ -58,6 +58,8 @@ public class HockeyBracket {
                 System.out.print(" " + sortedByGroup.get(k - 1));
             }
         }
+        System.out.println("");
+
     }
 
     public static HashMap<Integer, Integer> sortByValue(Map<Integer, Integer> points) {
