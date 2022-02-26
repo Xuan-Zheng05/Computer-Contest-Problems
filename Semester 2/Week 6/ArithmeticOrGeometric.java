@@ -1,9 +1,5 @@
 import java.util.*;
 import java.io.*;
-// (a-b)%mod = ((a%mod) - (b%mod))%mod
-// (a+b)%mod = ((a%mod + (b%mod))%mod
-// (a*b)%mod = ((a%mod) * (b%mod))%mod
-// (a/b)%mod ≠ ((a%mod) / (b%mod))%mod
 
 public class ArithmeticOrGeometric {
 
@@ -14,35 +10,48 @@ public class ArithmeticOrGeometric {
     public static void main(String[] args) throws IOException {
         int t = readInt();
         long M = 1000000007;
+
         for (int i = 0; i < t; i++) {
-            int a = readInt(), b = readInt(), c = readInt();
-            int k = readInt();
-            int commonDifference = b - a;
+            long a = readInt(), b = readInt(), c = readInt();
+            long k = readInt();
+            long commonDifference = b - a;
             if (c - b == commonDifference) {
                 long answer = (a + (k - 1) * commonDifference) % M;
                 System.out.println(answer);
             } else {
-                int commonRatio = b / a;
-                long answer = factorial(a, commonRatio, k);
+                long commonRatio = b / a;
+                long answer = cal(commonRatio, k - 1, 1000000007);
+                answer = ((answer % M) * (a % M)) % M;
                 System.out.println(answer);
-
             }
         }
     }
 
-    static long factorial(int a, int commonRatio, int k) {
-        long M = 1000000007;
-        long value = a;
-        for (int i = 1; i < k; i++) {
-            if (value > Integer.MAX_VALUE) {
-                value = (value % M * commonRatio) % M;
-            } else {
-                value = (value * commonRatio);
-            }
+    static long cal(long N, long pow, long MOD) {
 
+        if (N == 0 || N == 1) {
+            return N % MOD;
         }
 
-        return value % M;
+        if (pow == 0) {
+            return 1;
+        }
+        if (MOD == 1) {
+            return 0;
+        }
+
+        long ans = 1;
+
+        while (pow != 0) {
+
+            if (pow % 2 != 0) {
+                ans = ((ans % MOD) * (N % MOD)) % MOD;
+            }
+
+            N = ((N % MOD) * (N % MOD)) % MOD;
+            pow /= 2;
+        }
+        return ans;
     }
 
     static String next() throws IOException {
