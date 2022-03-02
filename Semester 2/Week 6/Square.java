@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.concurrent.CountedCompleter;
 import java.io.*;
 
 public class Square {
