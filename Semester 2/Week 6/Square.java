@@ -9,86 +9,34 @@ public class Square {
 
     public static void main(String[] args) throws IOException {
         int n = readInt();
-        boolean[][] square = new boolean[n][n];
+        int[][] square = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (readInt() == 1) {
-                    square[i][j] = true;
-                }
+                square[i][j] = readInt();
             }
         }
 
-        int largestSquare = 0;
+        int largestSquare = 1;
         int times = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int counter = 0;
-                boolean continueLoop = true;
-
-                while (counter < n) {
-                    for (int k = i; k < counter && i + counter < n && j + counter < n && k + j < n
-                            && k + i < n; k++) {
-                        if (!square[k + i][counter + j] || !square[counter + i][k + j]) {
-                            continueLoop = false;
-                            break;
-                        }
-
+                if (square[i][j] != 0) {
+                    if (i != 0 && j != 0) {
+                        int up = square[i - 1][j];
+                        int left = square[i][j - 1];
+                        int diagonal = square[i - 1][j - 1];
+                        square[i][j] = Math.min(up, Math.min(left, diagonal)) + 1;
                     }
-                    if (i + counter < n && j + counter < n) {
-                        if (!square[i + counter][counter + j]) {
-                            continueLoop = false;
-                        }
+                    if (square[i][j] > largestSquare) {
+                        largestSquare = square[i][j];
+                        times = 1;
+                    } else if (square[i][j] == largestSquare) {
+                        times++;
                     }
-
-                    if (!continueLoop) {
-                        if (counter > largestSquare) {
-                            largestSquare = counter;
-                            times = 1;
-                        } else if (largestSquare == counter) {
-                            times++;
-                        }
-                        break;
-                    }
-                    counter++;
                 }
             }
         }
         System.out.println(largestSquare * times);
-        // int counter = 0;
-        // int maxN = 1;
-        // int maxnnn = 0;
-
-        // for (int i = 1; i < n + 1; i++) {
-        // int maxCount = 0;
-        // for (int j = 0; j < n - counter; j++) {
-        // for (int k = 0; k < n - counter; k++) {
-        // boolean found = false;
-        // for (int l = j; l < j + i; l++) {
-        // if (found)
-        // break;
-        // for (int m = k; m < k + i; m++) {
-        // if (square[l][m] == false) {
-        // found = true;
-        // break;
-        // }
-        // }
-        // }
-        // if (!found) {
-        // maxCount += 1;
-        // }
-
-        // }
-        // }
-        // if (maxCount == 0) {
-        // maxN = i - 1;
-        // break;
-        // } else {
-        // maxnnn = maxCount;
-        // }
-
-        // counter++;
-        // }
-        // System.out.println(maxN * maxnnn);
     }
 
     static String next() throws IOException {
