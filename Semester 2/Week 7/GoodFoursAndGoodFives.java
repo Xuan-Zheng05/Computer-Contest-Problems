@@ -8,7 +8,14 @@ public class GoodFoursAndGoodFives {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        int n = readInt();
+        int ways = 0;
+        for (int a = 0; a <= n / 4; a++) {
+            if ((n - 4 * a) % 5 == 0) {
+                ways++;
+            }
+        }
+        System.out.println(ways);
     }
 
     static String next() throws IOException {
