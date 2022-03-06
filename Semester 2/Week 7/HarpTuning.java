@@ -8,53 +8,31 @@ public class HarpTuning {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        String input = readLine();
+        String instructions = readLine();
 
-        char[] inputLetters = input.toCharArray();
+        String strings = "";
+        for (int i = 0; i < instructions.length(); i++) {
+            if (instructions.charAt(i) == '+' || instructions.charAt(i) == '-') {
+                System.out.print(strings + " ");
+                strings = "";
 
-        ArrayList<String> list = new ArrayList<String>();
-        int index = 0;
-        int start = 0;
-        for (int i = 0; i < inputLetters.length; i++) {
-            String instruction = "";
-            int number;
-            if (inputLetters[i] >= 49 && inputLetters[i] <= 57) {
-                if (i + 1 < inputLetters.length) {
-                    while (i + 1 < inputLetters.length && inputLetters[i + 1] > 49 && inputLetters[i + 1] < 57) {
-                        i++;
-                    }
-                    list.add(input.substring(start, i + 1));
-                    input.replace(list.get(index), "");
-                    index++;
-                    start = i + 1;
-                } else if (i + 1 >= inputLetters.length) {
-                    list.add(input.substring(start, i + 1));
-                    input.replace(list.get(index), "");
-                    index++;
-                    start = i + 1;
-                    break;
+                if (instructions.charAt(i) == '+') {
+                    System.out.print("tighten ");
+                } else if (instructions.charAt(i) == '-') {
+                    System.out.print("loosen ");
                 }
-                start = i + 1;
+
+            } else if (instructions.charAt(i) >= '1' && instructions.charAt(i) <= '9') {
+                System.out.print(instructions.charAt(i));
+
+            } else if (i > 0 && instructions.charAt(i - 1) >= '1' && instructions.charAt(i - 1) <= '9') {
+                System.out.println();
+                strings += instructions.charAt(i);
+            } else {
+                strings += instructions.charAt(i);
             }
         }
-
-        String strings = "", action = "", numbers = "";
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = 0; j < list.get(i).length(); j++) {
-                if (list.get(i).charAt(j) == 43) {
-                    action = "tighten";
-                    strings = list.get(i).substring(0, j);
-                    numbers = list.get(i).substring(j + 1, list.get(i).length());
-                    break;
-                } else if (list.get(i).charAt(j) == 45) {
-                    action = "loosen";
-                    strings = list.get(i).substring(0, j);
-                    numbers = list.get(i).substring(j + 1, list.get(i).length());
-                    break;
-                }
-            }
-            System.out.println(strings + " " + action + " " + numbers);
-        }
+        System.out.println();
     }
 
     static String next() throws IOException {
