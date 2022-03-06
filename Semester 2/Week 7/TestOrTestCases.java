@@ -7,10 +7,55 @@ public class TestOrTestCases {
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
 
+    static ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+    static int l;
+
     public static void main(String[] args) throws IOException {
-        int n = readInt(), l = readInt();
+        int n = readInt();
+        l = readInt();
         for (int i = 0; i < n; i++) {
+            int numbers = readInt();
+            ArrayList<String> temp = new ArrayList<String>();
+            for (int j = 0; j < numbers; j++) {
+                temp.add(next());
+            }
+            Collections.sort(temp);
+            list.add(temp);
         }
+
+        ArrayList<String> first = list.get(0);
+
+        // for (int i = 0; i < list.size(); i++) {
+        // ArrayList<String> first = list.get(i);
+        // for (int j = 0; j < first.size(); j++) {
+        // System.out.print(first.get(j));
+        // }
+        // System.out.println();
+        // }
+
+        for (int i = 0; i < first.size(); i++) {
+            System.out.println(first.get(i));
+            if (l != 1) {
+                possibleWords(first.get(i), 1, l);
+            }
+        }
+
+    }
+
+    static void possibleWords(String word, int index, int length) {
+        for (int i = index; i < list.size(); i++) {
+            ArrayList<String> temp = list.get(i);
+            for (int j = 0; j < temp.size(); j++) {
+                String add = temp.get(j);
+                add = word + add;
+                System.out.println(add);
+                if (!(add.length() > length - 1)) {
+                    possibleWords(add, i + 1, length);
+                }
+            }
+            // possibleWords(word, i + 1, l);
+        }
+        // System.out.println(word);
     }
 
     static String next() throws IOException {
