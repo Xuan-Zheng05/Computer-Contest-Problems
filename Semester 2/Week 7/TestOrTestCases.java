@@ -25,14 +25,6 @@ public class TestOrTestCases {
 
         ArrayList<String> first = list.get(0);
 
-        // for (int i = 0; i < list.size(); i++) {
-        // ArrayList<String> first = list.get(i);
-        // for (int j = 0; j < first.size(); j++) {
-        // System.out.print(first.get(j));
-        // }
-        // System.out.println();
-        // }
-
         for (int i = 0; i < first.size(); i++) {
             System.out.println(first.get(i));
             if (l != 1) {
@@ -53,9 +45,7 @@ public class TestOrTestCases {
                     possibleWords(add, i + 1, length);
                 }
             }
-            // possibleWords(word, i + 1, l);
         }
-        // System.out.println(word);
     }
 
     static String next() throws IOException {
