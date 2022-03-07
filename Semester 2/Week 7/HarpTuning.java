@@ -22,12 +22,13 @@ public class HarpTuning {
                     System.out.print("loosen ");
                 }
 
-            } else if (instructions.charAt(i) >= '1' && instructions.charAt(i) <= '9') {
+            } else if (instructions.charAt(i) >= '0' && instructions.charAt(i) <= '9') {
                 System.out.print(instructions.charAt(i));
 
-            } else if (i > 0 && instructions.charAt(i - 1) >= '1' && instructions.charAt(i - 1) <= '9') {
+            } else if (i > 0 && instructions.charAt(i - 1) >= '0' && instructions.charAt(i - 1) <= '9') {
                 System.out.println();
                 strings += instructions.charAt(i);
+
             } else {
                 strings += instructions.charAt(i);
             }
