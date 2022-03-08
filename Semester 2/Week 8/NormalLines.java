@@ -8,7 +8,28 @@ public class NormalLines {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
+        int x1 = readInt(), y1 = readInt();
+        int x2 = readInt(), y2 = readInt();
 
+        boolean xAxis = false, yAxis = false;
+
+        if (y1 == y2) {
+            xAxis = true;
+        }
+
+        if (x1 == x2) {
+            yAxis = true;
+        }
+
+        if (xAxis && yAxis) {
+            System.out.println("neither");
+        } else if (xAxis) {
+            System.out.println("x-axis");
+        } else if (yAxis) {
+            System.out.println("y-axis");
+        } else {
+            System.out.println("neither");
+        }
     }
 
     static String next() throws IOException {
