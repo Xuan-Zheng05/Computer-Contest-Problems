@@ -8,7 +8,25 @@ public class NormalConversions {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
+        int q = readInt();
+        for (int i = 0; i < q; i++) {
+            int firstBase = readInt();
+            Long num = readLong();
+            String strNum = Long.toString(num);
+            int convertBase = readInt();
 
+            System.out.println(q);
+            System.out.println(convertBase);
+            System.out.println(strNum);
+
+            strNum = baseConversion(strNum, firstBase, convertBase);
+            System.out.println(strNum);
+        }
+    }
+
+    public static String baseConversion(String number, int firstBase, int convertBase) {
+        return Long.toString(
+                Long.parseLong(number, firstBase), convertBase);
     }
 
     static String next() throws IOException {
