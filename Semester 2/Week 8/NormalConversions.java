@@ -11,22 +11,18 @@ public class NormalConversions {
         int q = readInt();
         for (int i = 0; i < q; i++) {
             int firstBase = readInt();
-            Long num = readLong();
-            String strNum = Long.toString(num);
+            int num = readInt();
             int convertBase = readInt();
 
-            System.out.println(q);
-            System.out.println(convertBase);
-            System.out.println(strNum);
+            String strNum = Integer.toString(num);
+            String newNum = baseConversion(strNum, firstBase, convertBase);
 
-            strNum = baseConversion(strNum, firstBase, convertBase);
-            System.out.println(strNum);
+            System.out.println(newNum);
         }
     }
 
     public static String baseConversion(String number, int firstBase, int convertBase) {
-        return Long.toString(
-                Long.parseLong(number, firstBase), convertBase);
+        return Integer.toString(Integer.parseInt(number, firstBase), convertBase);
     }
 
     static String next() throws IOException {
