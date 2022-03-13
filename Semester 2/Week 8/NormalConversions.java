@@ -11,18 +11,17 @@ public class NormalConversions {
         int q = readInt();
         for (int i = 0; i < q; i++) {
             int firstBase = readInt();
-            int num = readInt();
+            String strNum = next();
             int convertBase = readInt();
 
-            String strNum = Integer.toString(num);
-            String newNum = baseConversion(strNum, firstBase, convertBase);
-
-            System.out.println(newNum);
+            strNum = baseConversion(strNum, firstBase, convertBase);
+            System.out.println(strNum);
         }
     }
 
     public static String baseConversion(String number, int firstBase, int convertBase) {
-        return Integer.toString(Integer.parseInt(number, firstBase), convertBase);
+        return Long.toString(
+                Long.parseLong(number, firstBase), convertBase);
     }
 
     static String next() throws IOException {
