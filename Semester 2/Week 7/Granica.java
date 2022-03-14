@@ -14,9 +14,9 @@ public class Granica {
         for (int i = 0; i < n; i++) {
             numbers[i] = readInt();
         }
+        Arrays.sort(numbers);
 
-        for (int i = 2; i <= 10000; i++) {
-
+        for (int i = 2; i <= numbers[n - 1] + 1; i++) {
             boolean print = true;
             int remainder = numbers[0] % i;
 
@@ -35,6 +35,7 @@ public class Granica {
             System.out.print(" " + answers.get(i));
         }
         System.out.println();
+
     }
 
     static String next() throws IOException {
@@ -63,3 +64,5 @@ public class Granica {
         return br.readLine().trim();
     }
 }
+// 289 634 979 1669 2014 2704 3049 3394 4084 4429 4774 5119 5464 6154 6844 7189
+// 7534 8224 8569 8914
