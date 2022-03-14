@@ -8,7 +8,23 @@ public class NormalProbabilities {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
+        double probability = 1;
 
+        int n = readInt();
+        for (int i = 0; i < n; i++) {
+            char event = readCharacter();
+
+            if (event == 'B') {
+                probability = probability * 0.8;
+            } else if (event == 'C') {
+                probability = probability * 0.6;
+            } else if (event == 'D') {
+                probability = probability * 0.4;
+            } else if (event == 'E') {
+                probability = probability * 0.2;
+            }
+        }
+        System.out.println(probability);
     }
 
     static String next() throws IOException {
