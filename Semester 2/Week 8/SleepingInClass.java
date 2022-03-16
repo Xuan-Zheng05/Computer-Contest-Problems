@@ -17,8 +17,8 @@ public class SleepingInClass {
 
             for (int j = 1; j <= n; j++) {
                 a[j] = readInt();
-                psa[j] = psa[j - 1] + psa[j];
-                exist.add(psa[i]);
+                psa[j] = psa[j - 1] + a[j];
+                exist.add(psa[j]);
             }
             int sum = psa[n], ans = n;
 
@@ -28,19 +28,20 @@ public class SleepingInClass {
             }
 
             for (int len = n; len >= 1; len--) {
-
                 if (sum % len != 0) {
                     continue;
                 }
+
                 int value = sum / len;
-                boolean flag = true;
+                boolean find = true;
 
                 for (int x = value; x <= sum; x += value) {
                     if (!exist.contains(x)) {
-                        flag = false;
+                        find = false;
+                        break;
                     }
                 }
-                if (flag) {
+                if (find) {
                     ans = n - len;
                     break;
                 }
