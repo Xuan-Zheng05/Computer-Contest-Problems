@@ -8,6 +8,22 @@ public class PackingMicrowaves {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
+        long n = readLong();
+
+        long x = readLong(), y = readLong(), z = readLong();
+        long rectangleArea = x * y * z;
+
+        long a = readLong(), b = readLong(), c = readLong();
+        long truckArea = a * b * c;
+
+        if (rectangleArea > truckArea) {
+            System.out.println("SCAMMED");
+            System.exit(0);
+        }
+        double fit = truckArea / rectangleArea;
+
+        long answer = (long) Math.ceil(n / fit);
+        System.out.println(answer);
 
     }
 
