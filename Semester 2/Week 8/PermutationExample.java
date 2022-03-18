@@ -22,9 +22,11 @@ public class PermutationExample {
         }
 
         for (int i = 0; i < a.length; i++) {
+
             if (!used[i]) {
-                used[i] = true;
                 perm.add(a[i]);
+                used[i] = true;
+
                 fun(a, used, perm);
                 perm.remove(perm.size() - 1);
                 used[i] = false;
