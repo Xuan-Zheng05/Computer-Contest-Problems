@@ -14,58 +14,41 @@ public class SquarePool {
             x[i] = readInt();
             y[i] = readInt();
         }
+
         t += 2;
         x[t - 1] = n + 1;
         y[t - 1] = n + 1;
         int ans = 0;
+
         for (int i = 0; i < t; i++) {
             for (int j = i + 1; j < t; j++) {
-                int lft = Math.min(x[i], x[j]), rit = Math.max(x[i], x[j]);
-                int width = rit - lft - 1;
-                List<Integer> mid = new ArrayList<>();
+
+                int left = Math.min(x[j], x[i]);
+                int right = Math.max(x[i], x[j]);
+                int width = right - left - 1;
+
+                List<Integer> mid = new ArrayList<Integer>();
                 for (int k = 0; k < t; k++) {
-                    if (x[k] > lft && x[k] < rit)
+                    if (x[k] > left && x[k] < right) {
                         mid.add(y[k]);
+                    }
                 }
                 mid.add(0);
                 mid.add(n + 1);
                 Collections.sort(mid);
-                for (int k = 1; k < mid.size(); k++) {
-                    int height = mid.get(k) - mid.get(k - 1) - 1;
-                    ans = Math.max(ans, Math.min(width, height));
+
+                for (int k = 0; k < mid.size(); k++) {
+                    if (k != 0) {
+                        int tempAns = mid.get(k) - mid.get(k - 1) - 1;
+                        ans = Math.max(ans, Math.min(width, tempAns));
+                    }
+
                 }
+
             }
         }
         System.out.println(ans);
-        // int n = readInt(), t = readInt();
-        // int[][] pool = new int[n][n];
 
-        // for (int i = 0; i < n; i++) {
-        // for (int j = 0; j < n; j++) {
-        // pool[i][j] = 1;
-        // }
-        // }
-        // for (int i = 0; i < t; i++) {
-        // int r = readInt(), c = readInt();
-        // pool[r - 1][c - 1] = 0;
-        // }
-        // int largestSquare = 1;
-        // for (int i = 0; i < n; i++) {
-        // for (int j = 0; j < n; j++) {
-        // if (pool[i][j] != 0) {
-        // if (i != 0 && j != 0) {
-        // int up = pool[i - 1][j];
-        // int left = pool[i][j - 1];
-        // int diagonal = pool[i - 1][j - 1];
-        // pool[i][j] = Math.min(up, Math.min(left, diagonal)) + 1;
-        // }
-        // if (pool[i][j] > largestSquare) {
-        // largestSquare = pool[i][j];
-        // }
-        // }
-        // }
-        // }
-        // System.out.println(largestSquare);
     }
 
     static String next() throws IOException {

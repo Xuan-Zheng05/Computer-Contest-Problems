@@ -9,20 +9,30 @@ public class PackingMicrowaves {
 
     public static void main(String[] args) throws IOException {
         long n = readLong();
-
         long x = readLong(), y = readLong(), z = readLong();
-        long rectangleArea = x * y * z;
-
         long a = readLong(), b = readLong(), c = readLong();
-        long truckArea = a * b * c;
 
-        if (rectangleArea > truckArea) {
+        long placedA = a / x * b / y * c / z;
+        long placedB = a / x * b / z * c / y;
+        long placedC = b / x * a / y * c / z;
+        long placedD = b / x * a / z * c / y;
+        long placedE = c / x * a / y * b / z;
+        long placedF = c / x * a / z * b / z;
+
+        long bestPlace = 0;
+
+        bestPlace = Math.max(placedA, placedB);
+        bestPlace = Math.max(bestPlace, placedC);
+        bestPlace = Math.max(bestPlace, placedD);
+        bestPlace = Math.max(bestPlace, placedE);
+        bestPlace = Math.max(bestPlace, placedF);
+
+        if (bestPlace == 0) {
             System.out.println("SCAMMED");
             System.exit(0);
         }
-        double fit = truckArea / rectangleArea;
 
-        long answer = (long) Math.ceil(n / fit);
+        long answer = (long) Math.ceil((double) n / (double) bestPlace);
         System.out.println(answer);
 
     }
