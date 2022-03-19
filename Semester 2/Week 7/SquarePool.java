@@ -23,11 +23,12 @@ public class SquarePool {
         for (int i = 0; i < t; i++) {
             for (int j = i + 1; j < t; j++) {
 
-                int left = Math.min(x[j], x[i]);
+                int left = Math.min(x[i], x[j]);
                 int right = Math.max(x[i], x[j]);
                 int width = right - left - 1;
 
-                List<Integer> mid = new ArrayList<Integer>();
+                List<Integer> mid = new ArrayList<>();
+
                 for (int k = 0; k < t; k++) {
                     if (x[k] > left && x[k] < right) {
                         mid.add(y[k]);
@@ -35,16 +36,10 @@ public class SquarePool {
                 }
                 mid.add(0);
                 mid.add(n + 1);
-                Collections.sort(mid);
 
-                for (int k = 0; k < mid.size(); k++) {
-                    if (k != 0) {
-                        int tempAns = mid.get(k) - mid.get(k - 1) - 1;
-                        ans = Math.max(ans, Math.min(width, tempAns));
-                    }
-
+                for (int k = 1; k < mid.size(); k++) {
+                    ans = Math.max(ans, Math.min(width, mid.get(k) - mid.get(k - 1) - 1));
                 }
-
             }
         }
         System.out.println(ans);
