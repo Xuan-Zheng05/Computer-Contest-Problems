@@ -9,15 +9,23 @@ public class PackingMicrowaves {
 
     public static void main(String[] args) throws IOException {
         long n = readLong();
-        long x = readLong(), y = readLong(), z = readLong();
-        long a = readLong(), b = readLong(), c = readLong();
+        long[] microwave = new long[3];
+        long[] truck = new long[3];
 
-        long placedA = a / x * b / y * c / z;
-        long placedB = a / x * b / z * c / y;
-        long placedC = b / x * a / y * c / z;
-        long placedD = b / x * a / z * c / y;
-        long placedE = c / x * a / y * b / z;
-        long placedF = c / x * a / z * b / z;
+        microwave[0] = readLong();
+        microwave[1] = readLong();
+        microwave[2] = readLong();
+        truck[0] = readLong();
+        truck[1] = readLong();
+        truck[2] = readLong();
+
+        long placedA = (truck[0] / microwave[0]) * (truck[1] / microwave[1]) * (truck[2] / microwave[2]);
+
+        long placedB = (truck[0] / microwave[0]) * (truck[1] / microwave[2]) * (truck[2] / microwave[1]);
+        long placedC = (truck[0] / microwave[1]) * (truck[1] / microwave[0]) * (truck[2] / microwave[2]);
+        long placedD = (truck[0] / microwave[1]) * (truck[1] / microwave[2]) * (truck[2] / microwave[0]);
+        long placedE = (truck[0] / microwave[2]) * (truck[1] / microwave[0]) * (truck[2] / microwave[1]);
+        long placedF = (truck[0] / microwave[2]) * (truck[1] / microwave[1]) * (truck[2] / microwave[0]);
 
         long bestPlace = 0;
 
