@@ -35,10 +35,10 @@ public class Perket {
             return;
 
         }
-        fun(cur + 1, n, comb);
-        comb.add(cur);
-        fun(cur + 1, n, comb);
-        comb.remove(comb.size() - 1);
+        fun(cur + 1, n, comb); // not add
+        comb.add(cur); // add
+        fun(cur + 1, n, comb); // method
+        comb.remove(comb.size() - 1); // remove
     }
 
     static String next() throws IOException {
