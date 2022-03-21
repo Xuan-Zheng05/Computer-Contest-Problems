@@ -6,62 +6,39 @@ public class Perket {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
-    static int permutations = 0, k;
+    static int n, bit[], sour[], ans = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
-        int n = readInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = i + 1;
+        n = readInt();
+        bit = new int[n + 1];
+        sour = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            sour[i] = readInt();
+            bit[i] = readInt();
         }
-        k = readInt();
-        int[] before = new int[k];
-        int[] after = new int[k];
-        for (int i = 0; i < k; i++) {
-            before[i] = readInt();
-            after[i] = readInt();
-        }
-
-        boolean[] used = new boolean[a.length];
-        List<Integer> perm = new ArrayList<>();
-
-        fun(a, used, perm, before, after);
-
-        System.out.println(permutations);
+        List<Integer> comb = new ArrayList<>();
+        fun(1, n, comb);
+        System.out.println(ans);
     }
 
-    static void fun(int[] a, boolean[] used, List<Integer> perm, int[] before, int[] after) {
-        if (perm.size() == a.length) {
-            boolean flag = true;
-
-            for (int i = 0; i < k; i++) {
-                for (int j = 0; j < perm.size(); j++) {
-                    if (perm.get(j) == before[i]) {
-                        flag = false;
-                    } else if (perm.get(j) == after[i]) {
-                        flag = true;
-                    }
-                }
-                if (!flag) {
-                    break;
-                }
+    static void fun(int cur, int n, List<Integer> comb) {
+        if (cur > n) {
+            if (comb.isEmpty()) {
+                return;
             }
-            if (flag) {
-                permutations++;
+            int totalSour = 1, totalBitter = 0;
+            for (int x : comb) {
+                totalSour *= sour[x];
+                totalBitter += bit[x];
             }
+            ans = Math.min(ans, Math.abs(totalSour - totalBitter));
             return;
-        }
 
-        for (int i = 0; i < a.length; i++) {
-            if (!used[i]) {
-                perm.add(a[i]);
-                used[i] = true;
-
-                fun(a, used, perm, before, after);
-                perm.remove(perm.size() - 1);
-                used[i] = false;
-            }
         }
+        fun(cur + 1, n, comb);
+        comb.add(cur);
+        fun(cur + 1, n, comb);
+        comb.remove(comb.size() - 1);
     }
 
     static String next() throws IOException {
