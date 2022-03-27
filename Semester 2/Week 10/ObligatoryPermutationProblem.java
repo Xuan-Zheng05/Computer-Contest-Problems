@@ -10,7 +10,7 @@ public class ObligatoryPermutationProblem {
     public static void main(String[] args) throws IOException {
         int N = readInt();
         long K = readLong();
-        ArrayList<ArrayList<Integer>> cycles = new ArrayList();
+        ArrayList<ArrayList<Integer>> cycles = new ArrayList<>();
         int temp[] = new int[N + 1];
         int p[] = new int[N + 1];
         for (int i = 1; i <= N; i++) {
@@ -21,9 +21,9 @@ public class ObligatoryPermutationProblem {
         for (int i = 1; i <= N; i++) {
             dir[i] = p[i];
         }
-        HashSet<Integer> seen = new HashSet();
+        HashSet<Integer> seen = new HashSet<>();
         for (int i = 1; i <= N; i++) {
-            ArrayList<Integer> templst = new ArrayList();
+            ArrayList<Integer> templst = new ArrayList<>();
             int idx = i;
             while (true) {
                 if (!seen.contains(idx)) {
