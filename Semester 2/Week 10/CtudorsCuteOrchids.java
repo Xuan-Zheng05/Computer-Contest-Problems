@@ -55,9 +55,9 @@ public class CtudorsCuteOrchids {
             return;
 
         }
-        fun(cur + 1, n, comb);
+        fun(cur + 1, m, comb);
         comb.add(cur);
-        fun(cur + 1, n, comb);
+        fun(cur + 1, m, comb);
         comb.remove(comb.size() - 1);
     }
 
