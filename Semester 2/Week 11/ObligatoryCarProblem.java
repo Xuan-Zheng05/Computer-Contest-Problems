@@ -8,7 +8,11 @@ public class ObligatoryCarProblem {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        long n = readLong();
+        if (n - 3 < 0) {
+            n = 3;
+        }
+        System.out.println(n - 3);
     }
 
     static String next() throws IOException {
