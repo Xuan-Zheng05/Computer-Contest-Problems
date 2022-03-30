@@ -10,8 +10,7 @@ public class WorkoutRoutine {
     public static void main(String[] args) throws IOException {
         int n = readInt();
         int k = readInt();
-        long sum = 0;
-        long lastNum = 0;
+        long sum = 0, lastNum = 0;
         for (int i = 1; i < n; i++) {
             sum += i;
             System.out.print(i + " ");
