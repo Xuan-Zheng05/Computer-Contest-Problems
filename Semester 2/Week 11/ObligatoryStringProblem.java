@@ -6,13 +6,37 @@ public class ObligatoryStringProblem {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
+    static int k;
 
     public static void main(String[] args) throws IOException {
-        long n = readLong();
-        if (n - 3 < 0) {
-            n = 3;
+        k = readInt();
+        char[] a = readLine().toCharArray();
+        boolean[] used = new boolean[a.length];
+        List<Character> perm = new ArrayList<>();
+        fun(a, used, perm);
+        System.out.println();
+    }
+
+    static void fun(char[] a, boolean[] used, List<Character> perm) {
+        if (perm.size() == a.length) {
+
+            for (int i = 0; i < a.length; i++) {
+
+            }
+            return;
         }
-        System.out.println(n - 3);
+
+        for (int i = 0; i < a.length; i++) {
+
+            if (!used[i]) {
+                perm.add(a[i]);
+                used[i] = true;
+
+                fun(a, used, perm);
+                perm.remove(perm.size() - 1);
+                used[i] = false;
+            }
+        }
     }
 
     static String next() throws IOException {
