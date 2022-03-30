@@ -11,12 +11,14 @@ public class WorkoutRoutine {
         int n = readInt();
         int k = readInt();
         long sum = 0;
+        long lastNum = 0;
         for (int i = 1; i < n; i++) {
-            System.out.print(i + " ");
             sum += i;
+            System.out.print(i + " ");
+            lastNum = i;
         }
         boolean flag = true;
-        long temp = sum + 1;
+        long temp = lastNum + 1;
         while (flag) {
             if ((sum + temp) % k == 0) {
                 System.out.println(temp);
