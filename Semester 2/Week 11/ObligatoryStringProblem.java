@@ -7,22 +7,31 @@ public class ObligatoryStringProblem {
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
     static int k;
+    static char[] b;
 
     public static void main(String[] args) throws IOException {
         k = readInt();
-        char[] a = readLine().toCharArray();
+        char[] a = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                'u', 'v', 'w', 'x', 'y', 'z' };
+        b = readLine().toCharArray();
         boolean[] used = new boolean[a.length];
         List<Character> perm = new ArrayList<>();
         fun(a, used, perm);
-        System.out.println();
     }
 
     static void fun(char[] a, boolean[] used, List<Character> perm) {
-        if (perm.size() == a.length) {
+        if (perm.size() == 4) {
 
-            for (int i = 0; i < a.length; i++) {
+            // int distance = 0;
+            // for (int i = 0; i < b.length; i++) {
 
-            }
+            // }
+            // if (distance <= k) {
+            // for (int i = 0; i < perm.size(); i++) {
+            // System.out.print(perm.get(i));
+            // }
+            // }
+            // System.out.println();
             return;
         }
 
