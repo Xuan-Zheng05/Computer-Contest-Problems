@@ -8,7 +8,8 @@ public class LightsGame {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        long n = readLong();
+        System.out.println((long) Math.sqrt(n));
     }
 
     static String next() throws IOException {
