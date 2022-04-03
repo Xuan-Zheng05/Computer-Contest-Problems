@@ -13,12 +13,10 @@ public class BobsMaximalSequenceSum {
         for (int i = 0; i < n - 1; i++) {
             b[i] = readInt();
         }
-
-        long maximum = 0;
-        for (int i = 0; i < n - 2; i++) {
-            if (b[i] < b[i + 1]) {
-                maximum += b[i] * 2;
-                i++;
+        long maximum = b[0];
+        for (int i = 1; i < n - 1; i++) {
+            if (b[i] > b[i - 1]) {
+                maximum += b[i - 1];
             } else {
                 maximum += b[i];
             }
