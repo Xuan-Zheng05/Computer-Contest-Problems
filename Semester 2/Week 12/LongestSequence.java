@@ -9,12 +9,15 @@ public class LongestSequence {
 
     public static void main(String[] args) throws IOException {
         long l = readLong(), r = readLong();
-        for (int i = 0; i < r / 2; i++) {
-            long temp = 0;
-            while (temp < r) {
-
+        long longestLength = 1;
+        long num = l;
+        while (num < r) {
+            num *= 2;
+            if (num <= r) {
+                longestLength++;
             }
         }
+        System.out.println(longestLength);
     }
 
     static String next() throws IOException {
