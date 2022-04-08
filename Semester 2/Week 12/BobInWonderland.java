@@ -18,6 +18,13 @@ public class BobInWonderland {
             int t = readInt();
             int result = Arrays.binarySearch(heights, t);
             if (result > 0) {
+                while (result - 1 >= 0) {
+                    if (heights[result - 1] == t) {
+                        result--;
+                    } else {
+                        break;
+                    }
+                }
                 System.out.println(n - result);
             } else {
                 System.out.println(n - (result * -1 - 1));
