@@ -9,18 +9,29 @@ public class ColourfulMarbles {
 
     public static void main(String[] args) throws IOException {
         int n = readInt(), k = readInt();
-
+        int[] num = new int[200000];
         ArrayList<Integer> list = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
             int colour = readInt();
-            if (list.get(colour) == null) {
-                list.add(1);
-            } else {
-                map.put(colour, map.get(colour) + 1);
+            num[colour]++;
+        }
+        Arrays.sort(num);
+        int index = 0;
+        for (int i = 0; i < num.length; i++) {
+            index = i;
+            if (num[index] > 0) {
+                break;
             }
         }
-        Collections.sort(list);
+        for (int i = index; i < num.length; i++) {
+            list.add(num[i]);
+        }
+        int ans = 0;
+        for (int i = 0; i < list.size() - k; i++) {
+            ans += list.get(i);
+        }
+        System.out.println(ans);
+
     }
 
     static String next() throws IOException {
