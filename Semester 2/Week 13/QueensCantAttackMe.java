@@ -8,7 +8,10 @@ public class QueensCantAttackMe {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        int n = readInt(), m = readInt();
+        for (int i = 0; i < m; i++) {
+            int x = readInt(), y = readInt();
+        }
     }
 
     static String next() throws IOException {
