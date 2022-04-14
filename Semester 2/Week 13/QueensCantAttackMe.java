@@ -11,6 +11,7 @@ public class QueensCantAttackMe {
         int n = readInt(), m = readInt();
         for (int i = 0; i < m; i++) {
             int x = readInt(), y = readInt();
+
         }
     }
 
