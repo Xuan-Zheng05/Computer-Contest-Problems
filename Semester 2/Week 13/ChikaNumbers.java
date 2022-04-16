@@ -12,8 +12,25 @@ public class ChikaNumbers {
         int[][] grid = new int[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-
+                grid[i][j] = readInt();
             }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[n][m] == 0) {
+
+                }
+            }
+        }
+        boolean possible = true;
+        if (possible) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    System.out.println(grid[i][j]);
+                }
+            }
+        } else {
+            System.out.println(-1);
         }
     }
 
