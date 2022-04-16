@@ -10,12 +10,12 @@ public class MissingNumbers {
     public static void main(String[] args) throws IOException {
         int t = readInt();
         for (int i = 0; i < t; i++) {
-            int pairs = 0;
-            int n = readInt();
-            int newSum = readInt();
-            int oldSum = (int) (((double) n) / 2 * (1 + n));
-            int missing = oldSum - newSum;
-            int mid = missing / 2;
+            long pairs = 0;
+            long n = readInt();
+            long newSum = readInt();
+            long oldSum = (long) (((double) n) / 2 * (1 + n));
+            long missing = oldSum - newSum;
+            long mid = missing / 2;
             if (missing % 2 == 1) {
                 pairs = Math.min(mid, n - mid);
             } else {
