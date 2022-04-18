@@ -30,21 +30,21 @@ public class ChikaNumbers {
                     }
 
                     if (i + 1 < n && j + 1 < m) {
-                        if (grid[i][j] > grid[i + 1][j] && grid[i + 1][j] != 0) {
+                        if (grid[i][j] >= grid[i + 1][j] && grid[i + 1][j] != 0) {
                             possible = false;
                             break;
                         }
-                        if (grid[i][j] > grid[i][j + 1] && grid[i][j + 1] != 0) {
+                        if (grid[i][j] >= grid[i][j + 1] && grid[i][j + 1] != 0) {
                             possible = false;
                             break;
                         }
                     } else if (i + 1 < n) {
-                        if (grid[i][j] > grid[i + 1][j] && grid[i + 1][j] != 0) {
+                        if (grid[i][j] >= grid[i + 1][j] && grid[i + 1][j] != 0) {
                             possible = false;
                             break;
                         }
                     } else if (j + 1 < m) {
-                        if (grid[i][j] > grid[i][j + 1] && grid[i][j + 1] != 0) {
+                        if (grid[i][j] >= grid[i][j + 1] && grid[i][j + 1] != 0) {
                             possible = false;
                             break;
                         }
