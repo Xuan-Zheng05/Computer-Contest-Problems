@@ -8,13 +8,23 @@ public class VictorsMoralDilemma {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        int t = readInt();
-        for (int i = 0; i < t; i++) {
-            int n = readInt();
-            if (n != 2) {
-                System.out.println(Math.max(0, n - 1));
+        int n = readInt(), d = readInt();
+        int[] psa = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            psa[i] = psa[i - 1] + readInt();
+        }
+
+        int bottom = 0, top = n;
+        for (int i = 0; i < d; i++) {
+            int split = readInt();
+            System.out.println(psa[split] - psa[bottom]);
+            System.out.println(psa[top] - (psa[split] - psa[bottom]));
+            if (psa[split] - psa[bottom] >= psa[top] - (psa[split] - psa[bottom])) {
+                System.out.println(psa[split] - psa[bottom]);
+                bottom = split;
             } else {
-                System.out.println(n);
+                System.out.println(psa[top] - (psa[split] - psa[bottom]));
+                top = split;
             }
         }
     }
