@@ -28,6 +28,7 @@ public class DoubleKnockoutCompetition {
                 zeroLosses /= 2;
                 if (zeroLosses <= 0) {
                     zeroLosses = 1;
+
                 }
                 if (oneLosses == 1 && zeroLosses == 1) {
                     System.out.println("Round " + round + ": 1 undefeated, 1 one-loss, " + eliminated + " eliminated");
