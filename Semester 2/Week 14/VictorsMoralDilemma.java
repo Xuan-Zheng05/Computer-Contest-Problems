@@ -18,13 +18,12 @@ public class VictorsMoralDilemma {
         int bottom = 0, top = n;
         for (int i = 0; i < d; i++) {
             int split = readInt();
-            if (psa[split + bottom] - psa[bottom] >= psa[top] - (psa[split] -
-                    psa[bottom])) {
+            if (psa[split + bottom] - psa[bottom] >= psa[top] - (psa[split + bottom])) {
                 System.out.println(psa[split + bottom] - psa[bottom]);
-                bottom = split;
+                bottom += split;
             } else {
                 System.out.println(psa[top] - psa[split + bottom]);
-                top = split;
+                top = split + bottom;
             }
         }
     }
