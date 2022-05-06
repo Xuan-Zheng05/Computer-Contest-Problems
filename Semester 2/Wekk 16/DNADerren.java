@@ -8,7 +8,20 @@ public class DNADerren {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        char[] line = readLine().toCharArray();
+        System.out.print(line[0]);
+        for (int i = 1; i < line.length; i++) {
+            if (line[i] == 'A' && line[i - 1] == 'A') {
+                System.out.print(" " + line[i]);
+            } else if (line[i] == 'A' && line[i - 1] != 'A') {
+                System.out.print(line[i]);
+            } else if (line[i - 1] == 'A') {
+                System.out.print(line[i]);
+            } else {
+                System.out.print(" " + line[i]);
+            }
+        }
+        System.out.println();
     }
 
     static String next() throws IOException {
