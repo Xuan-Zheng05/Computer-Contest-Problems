@@ -19,16 +19,12 @@ public class AvocadoTrees {
         for (int i = 0; i < q; i++) {
             int avocados = 0;
             int l = readInt(), r = readInt();
-            boolean steal = true;
             for (int j = l; j <= r; j++) {
-                if (heights[i] > h) {
-                    steal = false;
+                if (heights[j] <= h) {
+                    avocados += yield[j];
                 }
-                avocados += yield[i];
             }
-            if (steal) {
-                max = Math.max(avocados, max);
-            }
+            max = Math.max(avocados, max);
         }
         System.out.println(max);
     }
