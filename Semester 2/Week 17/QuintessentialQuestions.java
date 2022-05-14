@@ -9,7 +9,24 @@ public class QuintessentialQuestions {
 
     public static void main(String[] args) throws IOException {
         int n = readInt(), m = readInt(), k = readInt();
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] best = new int[n];
+        int[] bestProfessor = new int[n];
+        for (int i = 0; i < k; i++) {
+            int professor = readInt();
+            int asked = readInt();
+            int rating = readInt();
+            if (rating > best[asked - 1]) {
+                bestProfessor[asked - 1] = professor;
+                best[asked - 1] = rating;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (bestProfessor[i] == 0) {
+                System.out.print(-1 + " ");
+            } else {
+                System.out.print(bestProfessor[i] + " ");
+            }
+        }
     }
 
     static String next() throws IOException {
