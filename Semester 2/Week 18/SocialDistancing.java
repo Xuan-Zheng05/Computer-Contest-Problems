@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class SocialDistancing {
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
