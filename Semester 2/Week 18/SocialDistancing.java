@@ -11,31 +11,34 @@ public class SocialDistancing {
     public static void main(String[] args) throws IOException {
         n = readInt();
         m = readInt();
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < m; i++) {
             p.add(new pair(readLong(), readLong()));
+        }
         Collections.sort(p);
-        long lo = 1, hi = (long) 1e18, ans = 0;
-        while (lo <= hi) {
-            long mid = (lo + hi) / 2;
+        long low = 1, high = (long) 1e18, ans = 0;
+        while (low <= high) {
+            long mid = (low + high) / 2;
             if (check(mid)) {
                 ans = mid;
-                lo = mid + 1;
-            } else
-                hi = mid - 1;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
         }
         System.out.println(ans);
     }
 
     static boolean check(long d) {
-        long last = Long.MIN_VALUE, cnt = 0;
+        long last = Long.MIN_VALUE, count = 0;
         for (pair e : p) {
             last = Math.max(last, e.l);
             while (last <= e.r) {
-                cnt++;
                 last += d;
+                count++;
             }
-            if (cnt >= n)
+            if (count >= n) {
                 return true;
+            }
         }
         return false;
     }
