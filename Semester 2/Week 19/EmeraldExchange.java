@@ -9,10 +9,18 @@ public class EmeraldExchange {
 
     public static void main(String[] args) throws IOException {
         int n = readInt();
-        int[] emeralds = new int[n];
+        int counter = 0;
+        int highest = 0;
         for (int i = 0; i < n; i++) {
-            emeralds[i] = readInt();
+            int emerald = readInt();
+            if (emerald % 2 == 0) {
+                counter += emerald;
+                highest = Math.max(counter, highest);
+            } else {
+                counter = 0;
+            }
         }
+        System.out.println(counter);
     }
 
     static String next() throws IOException {
