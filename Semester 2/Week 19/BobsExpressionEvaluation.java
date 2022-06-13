@@ -8,7 +8,50 @@ public class BobsExpressionEvaluation {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-
+        for (int t = 1; t <= 5; t++) {
+            String s[] = readLine().split(" ");
+            Stack<Integer> stk = new Stack<>();
+            if (s[0].charAt(0) >= '0' && s[0].charAt(0) <= '9') {
+                for (int i = 0; i < s.length; i++) {
+                    char c = s[i].charAt(0);
+                    if (c >= '0' && c <= '9')
+                        stk.push(Integer.parseInt(s[i]));
+                    else {
+                        int op2 = stk.pop(), op1 = stk.pop();
+                        if (c == '+')
+                            stk.push(op1 + op2);
+                        if (c == '-')
+                            stk.push(op1 - op2);
+                        if (c == '*')
+                            stk.push(op1 * op2);
+                        if (c == '/')
+                            stk.push(op1 / op2);
+                        if (c == '%')
+                            stk.push(op1 % op2);
+                    }
+                }
+            } else {
+                for (int i = s.length - 1; i >= 0; i--) {
+                    char c = s[i].charAt(0);
+                    if (c >= '0' && c <= '9')
+                        stk.push(Integer.parseInt(s[i]));
+                    else {
+                        int op1 = stk.pop(), op2 = stk.pop();
+                        if (c == '+')
+                            stk.push(op1 + op2);
+                        if (c == '-')
+                            stk.push(op1 - op2);
+                        if (c == '*')
+                            stk.push(op1 * op2);
+                        if (c == '/')
+                            stk.push(op1 / op2);
+                        if (c == '%')
+                            stk.push(op1 % op2);
+                    }
+                }
+            }
+            System.out.println(stk.pop());
+        }
     }
 
     static String next() throws IOException {
