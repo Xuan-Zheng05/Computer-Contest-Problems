@@ -1,35 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-public class FlipTheSwitches {
-
+public class ChampionContest {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        int n = readInt();
-        int[] num = new int[n];
-        String temp = readLine();
-        for (int i = 0; i < n; i++) {
-            num[i] = Character.getNumericValue(temp.charAt(i));
-        }
-        int counter = 0;
-        int flips = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            if (num[i] == 0) {
-                if (counter % 2 != 0) {
-                    counter++;
-                    flips++;
-                }
-            } else {
-                if (counter % 2 == 0) {
-                    counter++;
-                    flips++;
-                }
-            }
-        }
-        System.out.println(flips);
+        int n = readInt(), k = readInt();
+
     }
 
     static String next() throws IOException {

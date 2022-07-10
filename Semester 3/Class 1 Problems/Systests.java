@@ -1,35 +1,32 @@
 import java.util.*;
 import java.io.*;
 
-public class FlipTheSwitches {
-
+public class Systests {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        int n = readInt();
-        int[] num = new int[n];
-        String temp = readLine();
-        for (int i = 0; i < n; i++) {
-            num[i] = Character.getNumericValue(temp.charAt(i));
+        int batch = readInt(), s[] = new int[batch], e[] = new int[batch], val[] = new int[batch];
+        for (int i = 0; i < batch; i++) {
+            s[i] = readInt();
+            e[i] = readInt();
+            val[i] = readInt();
         }
-        int counter = 0;
-        int flips = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            if (num[i] == 0) {
-                if (counter % 2 != 0) {
-                    counter++;
-                    flips++;
-                }
-            } else {
-                if (counter % 2 == 0) {
-                    counter++;
-                    flips++;
-                }
-            }
+        int fail = readInt(), c[] = new int[fail];
+        for (int i = 0; i < fail; i++) {
+            c[i] = readInt();
         }
-        System.out.println(flips);
+        Arrays.sort(c);
+        int ans = 0;
+        for (int i = 0; i < batch; i++) {
+            int p = Arrays.binarySearch(c, s[i]); // if there is no such case, return - insertion_point - 1
+            if (p < 0)
+                p = -p - 1;
+            if (p == c.length || c[p] > e[i])
+                ans += val[i];
+        }
+        System.out.println(ans);
     }
 
     static String next() throws IOException {
