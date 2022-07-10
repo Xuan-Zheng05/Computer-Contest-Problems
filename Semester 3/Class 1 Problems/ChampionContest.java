@@ -10,35 +10,27 @@ public class ChampionContest {
         int n = readInt(), k = readInt();
         int[] champs = new int[n];
         int[] sortedChamps = new int[n];
-        int[] pair1 = new int[k];
-        int[] pair2 = new int[k];
 
         for (int i = 0; i < n; i++) {
             champs[i] = readInt();
             sortedChamps[i] = champs[i];
         }
 
+        int[] cantFight = new int[n];
         for (int i = 0; i < k; i++) {
-            pair1[i] = readInt();
-            pair2[i] = readInt();
+            int pair1 = readInt();
+            int pair2 = readInt();
+
+            if (champs[pair1 - 1] > champs[pair2 - 1]) {
+                cantFight[pair1 - 1]++;
+            } else if (champs[pair1 - 1] < champs[pair2 - 1]) {
+                cantFight[pair2 - 1]++;
+            }
         }
 
         Arrays.sort(sortedChamps);
 
         for (int i = 0; i < n; i++) {
-            int cantFight = 0;
-            for (int j = 0; j < k; j++) {
-                if (pair1[j] == i + 1) {
-                    if (champs[i] > champs[pair2[j] - 1]) {
-                        cantFight++;
-                    }
-                } else if (pair2[j] == i + 1) {
-                    if (champs[i] > champs[pair1[j] - 1]) {
-                        cantFight++;
-                    }
-                }
-            }
-
             int index = Arrays.binarySearch(sortedChamps, champs[i]);
 
             if (index > 0) {
@@ -52,8 +44,7 @@ public class ChampionContest {
                     }
                 }
             }
-
-            System.out.print((index - cantFight) + " ");
+            System.out.print((index - cantFight[i]) + " ");
         }
 
     }
