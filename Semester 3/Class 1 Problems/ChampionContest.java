@@ -10,13 +10,12 @@ public class ChampionContest {
         int n = readInt(), k = readInt();
         int[] champs = new int[n];
         int[] sortedChamps = new int[n];
+        int[] cantFight = new int[n];
 
         for (int i = 0; i < n; i++) {
             champs[i] = readInt();
             sortedChamps[i] = champs[i];
         }
-
-        int[] cantFight = new int[n];
         for (int i = 0; i < k; i++) {
             int pair1 = readInt();
             int pair2 = readInt();
