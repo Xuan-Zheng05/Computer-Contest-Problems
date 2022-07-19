@@ -14,7 +14,7 @@ public class CountNumberOfPairs {
             nums[i] = readInt();
         }
         Arrays.sort(nums);
-        int pairs = 0;
+        long pairs = 0;
         for (int i = 0; i < n - 1; i++) {
             int less = m - nums[i];
             int index = Arrays.binarySearch(nums, less);
