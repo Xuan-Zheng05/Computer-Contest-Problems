@@ -11,16 +11,16 @@ public class VoronoiVillages {
         int n = readInt();
         double[] villages = new double[n];
         for (int i = 0; i < n; i++) {
-            villages[i] = readInt();
+            villages[i] = readDouble();
         }
         Arrays.sort(villages);
-        ArrayList<Double> distance = new ArrayList<>();
+        double ans = Double.MAX_VALUE;
         for (int i = 1; i < n - 1; i++) {
-            distance.add((villages[i + 1] - villages[i]) / 2 + (villages[i] - villages[i - 1]) / 2);
+            double v1 = Math.abs(villages[i] - villages[i - 1]);
+            double v2 = Math.abs(villages[i + 1] - villages[i]);
+            ans = Math.min(ans, v1 / 2.0 + v2 / 2.0);
         }
-
-        Collections.sort(distance);
-        System.out.println(distance.get(0));
+        System.out.printf("%.1f\n", ans);
     }
 
     static String next() throws IOException {
