@@ -7,7 +7,7 @@ public class PhoneBook {
       try {
 
          Scanner sc;
-         boolean fromFile = true;
+         boolean fromFile = false;
 
          if (fromFile) {
             sc = new Scanner(new File("test.txt"));
