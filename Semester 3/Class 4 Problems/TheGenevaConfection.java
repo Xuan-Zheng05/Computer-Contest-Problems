@@ -11,27 +11,34 @@ public class TheGenevaConfection {
         int t = readInt();
         for (int i = 0; i < t; i++) {
             int n = readInt();
-            Stack<Integer> stack = new Stack<>();
+            Stack<Integer> top = new Stack<>();
             Stack<Integer> branch = new Stack<>();
             for (int j = 0; j < n; j++) {
-                stack.push(readInt());
+                top.push(readInt());
             }
 
             int next = 1;
             String result = "Y";
-            while (stack.size() > 0 || branch.size() > 0) {
-                int num = stack.pop();
-                if (num == next) {
+            Boolean loop = true;
+            while (loop && next <= n) {
+                if (top.size() > 0 && next == top.peek()) {
+                    top.pop();
                     next++;
+                } else if (branch.size() > 0 && branch.peek() == next) {
+                    branch.pop();
+                    next++;
+                } else if (top.size() > 0) {
+                    branch.push(top.pop());
                 } else {
-                    branch.push(num);
-                }
-
-                if (next == n) {
-                    break;
+                    loop = false;
                 }
             }
-            System.out.println(result);
+
+            if (loop) {
+                System.out.println("Y");
+            } else {
+                System.out.println("N");
+            }
         }
     }
 
