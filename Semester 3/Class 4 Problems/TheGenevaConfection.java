@@ -18,7 +18,6 @@ public class TheGenevaConfection {
             }
 
             int next = 1;
-            String result = "Y";
             Boolean loop = true;
             while (loop && next <= n) {
                 if (top.size() > 0 && next == top.peek()) {
