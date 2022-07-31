@@ -9,8 +9,8 @@ public class FromPrefixToPostfix {
 
     public static void main(String[] args) throws IOException {
         Stack<String> stack = new Stack<>();
-        String line;
-        while ((line = readLine()) != null) {
+        String line = readLine();
+        while (line.length() > 1 && line.charAt(0) != '0') {
             for (int i = line.length() - 1; i >= 0; i -= 2) {
                 if (isOperator(line.charAt(i))) {
                     String op1 = stack.pop();
@@ -23,6 +23,7 @@ public class FromPrefixToPostfix {
                 }
             }
             System.out.println(stack.pop());
+            line = readLine();
         }
     }
 

@@ -23,18 +23,18 @@ public class MrNAndPresents {
             }
         }
         for (Pair e : deque) {
-            if (!map.containsKey(e.val) || map.get(e.val) < e.idx) {
-                System.out.println(e.val);
+            if (!map.containsKey(e.value) || map.get(e.value) < e.index) {
+                System.out.println(e.value);
             }
         }
     }
 
     static class Pair {
-        int val, idx;
+        int value, index;
 
         Pair(int v0, int i0) {
-            val = v0;
-            idx = i0;
+            value = v0;
+            index = i0;
         }
     }
 
