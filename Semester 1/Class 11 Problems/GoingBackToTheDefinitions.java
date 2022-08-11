@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 public class GoingBackToTheDefinitions {
 
-    static BufferedReader br = getBufferedReader(true);
+    static BufferedReader br = getBufferedReader(false);
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
 
