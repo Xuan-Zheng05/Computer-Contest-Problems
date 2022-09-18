@@ -1,26 +1,27 @@
 import java.util.*;
 import java.io.*;
 
-public class HardcoreGrinding {
+public class Pie {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        int N = readInt(), mv = 10000000, dif[] = new int[mv + 2];
-        for (int i = 1; i <= N; i++) {
-            int x = readInt(), y = readInt();
-            dif[x]++;
-            dif[y]--;
+        int n = readInt(), m = readInt();
+        double[] arr = new double[n];
+        double pie = 1;
+        for (int i = 0; i < m; i++) {
+            int index = readInt();
+            double percentage = readDouble() / 100;
+            double share = pie * percentage;
+            pie -= share;
+
+            arr[index - 1] += share;
         }
-        int max = 0;
-        for (int i = 1; i <= mv; i++) {
-            dif[i] += dif[i - 1];
-            if (dif[i] > max)
-                max = dif[i];
+        for (int i = 0; i < n; i++) {
+            System.out.println(arr[i]);
         }
-        System.out.println(max);
     }
 
     static String next() throws IOException {
