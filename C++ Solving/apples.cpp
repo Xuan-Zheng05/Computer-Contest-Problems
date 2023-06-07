@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+// how many ways can m apples be plated on n plates?
 int count(int m, int n) {
     if (m <= 1 || n <= 1) return 1;
 
