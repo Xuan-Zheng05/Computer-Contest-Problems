@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/xuanzheng/PingZheng/Chinese Programming/8'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z12split_stringPcc, symObjAddr: 0x0, symBinAddr: 0x100003D2C, symSize: 0xFC }
+  - { offsetInCU: 0x4B, offset: 0x4B, size: 0x8, addend: 0x0, symName: __Z12split_stringPcc, symObjAddr: 0x0, symBinAddr: 0x100003D2C, symSize: 0xFC }
+  - { offsetInCU: 0xAF, offset: 0xAF, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xFC, symBinAddr: 0x100003E28, symSize: 0x110 }
+...

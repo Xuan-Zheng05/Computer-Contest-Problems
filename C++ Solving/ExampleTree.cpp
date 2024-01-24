@@ -1,0 +1,204 @@
+template <class T>
+class TreeNode
+{ // 树结点的ADT
+private:
+    T m_Value;           // 树结点的值
+    TreeNode<T> *pChild; // 第一个左孩子指针
+    TreeNode<T> *pSibling;
+
+public:
+    TreeNode(const T &value) : m_Value(value), pChild(nullptr), pSibling(nullptr) {}
+    virtual ~TreeNode(){};                                         // 析构函数
+    bool isLeaf() { return pChild == nullptr; };                   // 判断当前结点是否为叶结点
+    T Value() { return m_Value; };                                 // 返回结点的值
+    TreeNode<T> *LeftMostChild() { return pChild; };               // 返回第一个左孩子
+    TreeNode<T> *RightSibling(){return pSibling};                  // 返回右兄弟
+    void setValue(const T &value) { m_Value = value; };            // 设置当前结点的值
+    void setChild(TreeNode<T> *pointer) { pChild = pointer; };     // 设置左孩子
+    void setSibling(TreeNode<T> *pointer) { pSibling = pointer; }; // 设置右兄弟
+    void InsertFirst(TreeNode<T> *node)
+    {
+        if (node)
+        {
+            node->setSibling(pChild);
+            pChild = node;
+        }
+    }; // 以第一个左孩子身份插入结点
+    void InsertNext(TreeNode<T> *node)
+    {
+        if (node)
+        {
+            node->setSibling(pSibling);
+            pSibling = node;
+        }
+    }; // 以右兄弟的身份插入结点
+};
+template <class T>
+class Tree
+{
+private:
+    TreeNode<T> *root;
+
+public:
+    Tree() : root(nullptr) {} // 构造函数
+    virtual ~Tree()
+    {
+        if (root)
+        {
+            DestroyNodes(root);
+        }
+    };                                              // 析构函数
+    TreeNode<T> *getRoot() { return root; };        // 返回树中的根结点
+    void CreateRoot(const T &rootValue);            // 创建值为rootValue的根结点
+    bool isEmpty();                                 // 判断是否为空树
+    TreeNode<T> *Parent(TreeNode<T> *current);      // 返回父结点
+    TreeNode<T> *PrevSibling(TreeNode<T> *current); // 返回前一个兄弟
+    void DestroyNodes(TreeNode<T> *root);
+    void DeleteSubTree(TreeNode<T> *subroot);  // 删除以subroot子树
+    void RootFirstTraverse(TreeNode<T> *root); // 先根深度优先遍历树
+    void RootLastTraverse(TreeNode<T> *root);  // 后根深度优先遍历树
+    void WidthTraverse(TreeNode<T> *root);     // 广度优先遍历树
+};
+template <class T>
+void Tree<T>::CreateRoot(const T &rootValue)
+{
+    if (root)
+    {
+        // If the tree already has a root, do nothing
+        return;
+    }
+    root = new TreeNode<T>(rootValue);
+}
+template <class T>
+void Tree<T>::DestroyNodes(TreeNode<T> *root)
+{
+    if (root)
+    {
+        DestroyNodes(root->LeftMostChild()); // 递归删除第一子树
+        DestroyNodes(root->RightSibling());  // 递归删除其他子树
+        delete root;                         // 删除根结点
+    }
+}
+template <class T>
+void Tree<T>::DeleteSubTree(TreeNode<T> *subroot)
+{
+    if (subroot == NULL)
+        return;                             // 若待删除的子树为空则返回
+    TreeNode<T> *pointer = Parent(subroot); // 找subroot的父结点
+    if (pointer == NULL)
+    { // subroot没有父，则是某个树根
+        pointer = root;
+        while (pointer->RightSibling() != subroot) // 顺右链找左邻树根
+            pointer = pointer->RightSibling();
+        pointer->setSibling(subroot->RightSibling()); // 前后挂接，脱链
+    }
+    else if (pointer->LeftMostChild() == subroot)   // subroot为最左子
+        pointer->setChild(subroot->RightSibling()); // 挂新的最左
+    else
+    { // subroot有左兄弟的情况    while (pointer->RightSibling() != subroot)// 顺右链找左邻兄弟
+        pointer = pointer->RightSibling();
+        pointer->setSibling(subroot->RightSibling()); // 前后挂接，脱链
+    }
+    subroot->setSibling(NULL); // 非常重要，丢了会出错
+    DestroyNodes(subroot);     // 删除以subroot代表的子森林的所有结点
+}
+template <class T>
+void Tree<T>::RootFirstTraverse(
+    TreeNode<T> *root)
+{
+    while (root != NULL)
+    {
+        Visit(root->Value()); // 访问当前结点
+        // 遍历第1棵树根的子树森林(树根除外)
+        RootFirstTraverse(root->LeftMostChild());
+        root = root->RightSibling(); // 遍历其他树
+    }
+}
+template <class T>
+void Tree<T>::RootLastTraverse(
+    TreeNode<T> *root)
+{
+    while (root != NULL)
+    {
+        // 遍历第一棵树根的子树森林
+        RootLastTraverse(root->LeftMostChild());
+        Visit(root->Value());        // 访问当前结点
+        root = root->RightSibling(); // 遍历其他树
+    }
+}
+template <class T>
+void Tree<T>::WidthTraverse(TreeNode<T> *root)
+{
+    using std::queue; // 使用STL队列
+    queue<TreeNode<T> *> aQueue;
+    TreeNode<T> *pointer = root;
+    while (pointer != NULL)
+    {
+        aQueue.push(pointer);              // 当前结点进入队列
+        pointer = pointer->RightSibling(); // pointer指向右兄弟
+    }
+    while (!aQueue.empty())
+    {
+        pointer = aQueue.front();           // 获得队首元素
+        aQueue.pop();                       // 当前结点出队列
+        Visit(pointer->Value());            // 访问当前结点
+        pointer = pointer->LeftMostChild(); // pointer指向最左孩子
+        while (pointer != NULL)
+        { // 当前结点的子结点进队列
+            aQueue.push(pointer);
+            pointer = pointer->RightSibling();
+        }
+    }
+}
+template <class T>
+TreeNode<T> *Tree<T>::Parent(TreeNode<T> *current)
+{
+    if (!root || !current || root == current)
+    {
+        return nullptr; // If the tree is empty or current is the root, or current is not in the tree
+    }
+    std::queue<TreeNode<T> *> nodeQueue;
+    nodeQueue.push(root);
+    while (!nodeQueue.empty())
+    {
+        TreeNode<T> *node = nodeQueue.front();
+        nodeQueue.pop(); // Check if the current node's child is the target node
+        if (node->LeftMostChild() == current)
+        {
+            return node;
+        } // Enqueue all children for further exploration
+        TreeNode<T> *child = node->LeftMostChild();
+        while (child)
+        {
+            nodeQueue.push(child);
+            child = child->RightSibling();
+        }
+    }
+    return nullptr; // If the target node is not found
+}
+template <class T>
+TreeNode<T> *Tree<T>::PrevSibling(TreeNode<T> *current)
+{
+    if (!root || !current)
+    {
+        return nullptr; // If the tree is empty or current is not in the tree
+    }
+    std::queue<TreeNode<T> *> nodeQueue;
+    nodeQueue.push(root);
+    while (!nodeQueue.empty())
+    {
+        TreeNode<T> *node = nodeQueue.front();
+        nodeQueue.pop(); // Check if the current node's sibling is the target node
+        if (node->RightSibling() == current)
+        {
+            return node;
+        } // Enqueue all children for further exploration
+        TreeNode<T> *child = node->LeftMostChild();
+        while (child)
+        {
+            nodeQueue.push(child);
+            child = child->RightSibling();
+        }
+    }
+    return nullptr; // If the target node is not found
+}
